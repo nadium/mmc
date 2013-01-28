@@ -37,7 +37,7 @@
 		         // ID du tweet (format String)  
 		    $tweet_id = $result['id_str'];  
 		         // Texte du tweet, brut, sans code HTML pour les URLs  
-		            $tweet_text = $result['text'];  
+		    $tweet_text = $result['text'];  
 		         // Nom d'affichage de l'auteur du tweet  
 		    $user_name = $result['from_user_name'];  
 		         // Nom d'utilisateur de l'auteur du tweet  
@@ -47,10 +47,12 @@
 		    $tweet_date = $result['created_at'];  
 		         // ID utilisateur de l'auteur  
 		    $user_id = $result['from_user_id_str']; 
-		    echo $user_name;        
+		    echo $user_name.": "; 
+		    echo $tweet_text."<br/>";       
 		}
+		echo "<br/><br/>Nombre de Tweets:".$compteur;
 		
-		if ($compteur > 2) {?>
+		if ($compteur > 5) {?>
 		 	<script type="text/javascript">
 		 		document.getElementById('creature').className="change";
 		 	</script>
