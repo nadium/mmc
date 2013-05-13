@@ -14,10 +14,15 @@
 	<div id="creature"> </div>
 
 	<?php
+		$keywords = array('#MeetMyCreature','#FeedMyCreaturePhoto', '#FeedMyCreatureMusic', "#FeedMyCreature", "#feedmc","#feedmcp","#feedmcm");
 		// On recherche les tweets avec #MeetMyCreature 
-		$keyword = "#MeetMyCreature";  
+		for ($i=0; $i < count($keywords); $i++) {
+		
+		$keyword = $keywords[$i]; 
+		
+		//$keyword = #MeetMyCreature;  
 		// On doit percent-encoder la recherche  
-		// Ici, le "#" sera remplacé par "%23"  
+		 
 		$prct_keyword = urlencode($keyword);  
 		  
 		// Chaine d'appel à l'API  
@@ -50,14 +55,17 @@
 		    echo $user_name.": "; 
 		    echo $tweet_text."<br/>";       
 		}
-		echo "<br/><br/>Nombre de Tweets:".$compteur;
+		echo "Nombre de Tweets:".$compteur."<br/><br/>";
 		
 		if ($compteur > 5) {?>
 		 	<script type="text/javascript">
 		 		document.getElementById('creature').className="change";
 		 	</script>
 	 	<?php }
+	 	}//end for 
 	?>
+
+	
 
 
 </body>
