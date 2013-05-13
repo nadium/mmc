@@ -60,7 +60,8 @@
 			stationaryPosition = 300;
 			isPassed = false;
 
-		spriteSheet ={"animations": {"run": [0, 25], "stand": [59], "jump": [26, 63]}, "images": ["assets/runningGrant.png"], "frames": {"regX": 0, "height": 292.5, "count": 64, "regY": 0, "width": 165.75}};
+		//spriteSheet ={"animations": {"run": [0, 25], "stand": [59], "jump": [26, 63]}, "images": ["assets/runningGrant.png"], "frames": {"regX": 0, "height": 292.5, "count": 64, "regY": 0, "width": 165.75}};
+		spriteSheet ={"animations": {"run": [0, 10], "stand": [0], "images": ["assets/creasprite.png"], "frames": {"regX": 0, "height": 411, "count": 10, "regY": 0, "width": 255}};
 
 		var ss = new SpriteSheet(spriteSheet);
 		grant = new BitmapAnimation(ss);
@@ -70,7 +71,7 @@
 		/*ss.getAnimation("stand").frequency = 2;
 		ss.getAnimation("stand").runningRate = 0;*/
 		ss.getAnimation("run").next = "run";
-		ss.getAnimation("jump").next = "run";
+		//ss.getAnimation("jump").next = "run";
 		//grant.gotoAndPlay("stand");
 
 		// Position the Grant sprite
@@ -85,7 +86,8 @@
 			assets = [];
 
 		manifest = [
-			{src:"assets/runningGrant.png", id:"grant"}
+			//{src:"assets/runningGrant.png", id:"grant"}
+			{src:"assets/creasprite.png", id:"grant"}
 		];
 
 		loader = new PreloadJS();
@@ -125,7 +127,7 @@
 		setInterval(function handleJumpStart() {
 			var i = Math.floor(Math.random()*10);
 			if(0<=i && i<2){
-				grant.gotoAndPlay("jump");
+				//grant.gotoAndPlay("jump");
 			}
 			if(2<=i && i<5){
 				grant.gotoAndPlay("run");
@@ -148,7 +150,7 @@
 		function randomMove() {
 			var i = Math.floor(Math.random()*10);
 			if(0<=i && i<2){
-				grant.gotoAndPlay("jump");
+				//grant.gotoAndPlay("jump");
 			}
 			if(2<=i && i<5){
 				grant.gotoAndPlay("run");
