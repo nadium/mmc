@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Lun 13 Mai 2013 à 12:50
+-- Généré le: Lun 20 Mai 2013 à 17:04
 -- Version du serveur: 5.5.29
 -- Version de PHP: 5.4.10
 
@@ -74,6 +74,9 @@ CREATE TABLE `User` (
   `US_pw` varchar(250) NOT NULL,
   `US_point` int(11) NOT NULL,
   `CR_id` int(11) NOT NULL,
+  `US_music` int(11) NOT NULL,
+  `US_food` int(11) NOT NULL,
+  `US_photo` int(11) NOT NULL,
   PRIMARY KEY (`US_id`),
   KEY `CR_id` (`CR_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
@@ -82,11 +85,11 @@ CREATE TABLE `User` (
 -- Contenu de la table `User`
 --
 
-INSERT INTO `User` (`US_id`, `US_twitter`, `US_mail`, `US_pw`, `US_point`, `CR_id`) VALUES
-(1, 'Cainael', 'cainael@hotmail.fr', 'toto', 1000, 1),
-(2, 'Nadium', 'nadium@gmail.com', 'titi', 10, 2),
-(3, 'Loveless', 'loveless@re.com', 'loveless', 67, 2),
-(4, 'Manga', 'mangas@hr.com', 'mangas', 2500, 4);
+INSERT INTO `User` (`US_id`, `US_twitter`, `US_mail`, `US_pw`, `US_point`, `CR_id`, `US_music`, `US_food`, `US_photo`) VALUES
+(1, 'Cainael', 'cainael@hotmail.fr', 'toto', 1000, 1, 110, 98, 5),
+(2, 'Nadium', 'nadium@gmail.com', 'titi', 10, 2, 66, 678, 78),
+(3, 'Loveless', 'loveless@re.com', 'loveless', 67, 2, 890, 8, 987),
+(4, 'Manga', 'mangas@hr.com', 'mangas', 2500, 4, 980, 37, 6);
 
 --
 -- Contraintes pour les tables exportées
