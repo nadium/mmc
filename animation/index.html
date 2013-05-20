@@ -40,7 +40,7 @@
 	var mouvement = true;
 	var stage;
 	var w, h;
-	var sky, grant, ground, hill, hill2;
+	var sky, myCreature, ground, hill, hill2;
 	var runningRate, isInWarp, isStationary;
 	var stationaryPosition, isPassed;
 	var fp=0;
@@ -54,17 +54,17 @@
 			var canvas = document.getElementById("testCanvas");
 			stage = new Stage(canvas);
 
-			runningRate = 2.5;
+			runningRate = 1;
 			isInWarp = false;
 			isStationary = false;
 			stationaryPosition = 300;
 			isPassed = false;
 
-		//spriteSheet ={"animations": {"run": [0, 25], "stand": [59], "jump": [26, 63]}, "images": ["assets/runningGrant.png"], "frames": {"regX": 0, "height": 292.5, "count": 64, "regY": 0, "width": 165.75}};
-		spriteSheet ={"animations": {"run": [0, 10], "stand": [0], "images": ["assets/creasprite.png"], "frames": {"regX": 0, "height": 411, "count": 10, "regY": 0, "width": 255}};
+		//spriteSheet ={"animations": {"run": [0, 25], "stand": [59], "jump": [26, 63]}, "images": ["assets/creasprite.png"], "frames": {"regX": 0, "height": 292.5, "count": 64, "regY": 0, "width": 165.75}};
+		spriteSheet ={"animations": {"run": [1, 8], "stand": [0]}, "images": ["assets/creasprite.png"], "frames": {"regX": 0, "height": 411, "count": 10, "regY": 0, "width": 255}};
 
 		var ss = new SpriteSheet(spriteSheet);
-		grant = new BitmapAnimation(ss);
+		myCreature = new BitmapAnimation(ss);
 
 		// Set up looping
 		ss.getAnimation("stand").next = "stand";
@@ -72,12 +72,12 @@
 		ss.getAnimation("stand").runningRate = 0;*/
 		ss.getAnimation("run").next = "run";
 		//ss.getAnimation("jump").next = "run";
-		//grant.gotoAndPlay("stand");
+		//myCreature.gotoAndPlay("stand");
 
-		// Position the Grant sprite
-		grant.x = 100;
-		grant.y = 90;
-		grant.scaleX = grant.scaleY = 0.8;
+		// Position the myCreature sprite
+		myCreature.x = 100;
+		myCreature.y = 90;
+		myCreature.scaleX = myCreature.scaleY = 0.8;
 
 		// grab canvas width and height for later calculations:
 		w = canvas.width;
@@ -86,8 +86,8 @@
 			assets = [];
 
 		manifest = [
-			//{src:"assets/runningGrant.png", id:"grant"}
-			{src:"assets/creasprite.png", id:"grant"}
+			//{src:"assets/runningmyCreature.png", id:"myCreature"}
+			{src:"assets/creasprite.png", id:"myCreature"}
 		];
 
 		loader = new PreloadJS();
@@ -106,19 +106,19 @@
 
 			document.getElementById("loader").className = "";
 
-			if (grant == null) {
-				console.log("Can not play. Grant sprite was not loaded.");
+			if (myCreature == null) {
+				console.log("Can not play. myCreature sprite was not loaded.");
 				return;
 			}
 
-			stage.addChild(grant);
+			stage.addChild(myCreature);
 			//stage.onMouseDown = handleJumpStart;
 			//$("#tweet").click()=alert("bidule");
 			
 			//document.getElementById("tweet").onClick = alert("bidule");
 
 
-			Ticker.setFPS(40);
+			Ticker.setFPS(10);
 			Ticker.addListener(window);
 		}
 
@@ -126,18 +126,14 @@
 
 		setInterval(function handleJumpStart() {
 			var i = Math.floor(Math.random()*10);
-			if(0<=i && i<2){
-				//grant.gotoAndPlay("jump");
+			
+			if(0<=i && i<5){
+				myCreature.gotoAndPlay("run");
 			}
-			if(2<=i && i<5){
-				grant.gotoAndPlay("run");
+			if(5<=i && i<10){
+				myCreature.gotoAndPlay("stand");
 			}
-			if(5<=i && i<8){
-				grant.gotoAndPlay("stand");
-			}
-			if(i==9){
-
-			}
+			
 			fp++;
 			document.getElementById("num").innerHTML=fp;
 			document.getElementById("aleatoire").innerHTML=i;
@@ -150,13 +146,13 @@
 		function randomMove() {
 			var i = Math.floor(Math.random()*10);
 			if(0<=i && i<2){
-				//grant.gotoAndPlay("jump");
+				//myCreature.gotoAndPlay("jump");
 			}
 			if(2<=i && i<5){
-				grant.gotoAndPlay("run");
+				myCreature.gotoAndPlay("run");
 			}
 			if(5<=i && i<8){
-				grant.gotoAndPlay("stand");
+				myCreature.gotoAndPlay("stand");
 			}
 			if(i==9){
 
@@ -173,15 +169,17 @@
 
 		function tick() {
 			var outside = w + 20;
-			var position = grant.x;
+		
+			var position = myCreature.x +10;
+			
 			if (mouvement) {
-				grant.x = (position >= outside) ? -200 : position;
+				myCreature.x = (position >= outside) ? -200 : position;
 			} else {
 
 			}
 
-			//grant.x = stage.mouseX;
-			//grant.y = stage.mouseY;
+			//myCreature.x = stage.mouseX;
+			//myCreature.y = stage.mouseY;
 			stage.clear();
 			stage.update();
 		}
@@ -197,7 +195,7 @@
 	</header>
 
 	<div class="canvasHolder">
-		<canvas id="testCanvas" width="960" height="400"></canvas>
+		<canvas id="testCanvas" width="960" height="450"></canvas>
 	</div>
 	<div>Fame Points: </div><div id="num">Nombre</div>
 	<div>Aléatoire: </div><div id="aleatoire">Nombre</div>
