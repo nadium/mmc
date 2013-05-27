@@ -40,6 +40,7 @@
 	var mouvement = true;
 	var stage;
 	var w, h;
+	var sens= true;
 	var myCreature;
 	var runningRate, isInWarp, isStationary;
 	var stationaryPosition, isPassed;
@@ -51,7 +52,7 @@
 
 			document.getElementById("loader").className = "loader";
 
-			var canvas = document.getElementById("testCanvas");
+			var canvas = document.getElementById("canvas");
 			stage = new Stage(canvas);
 
 			runningRate = 1;
@@ -62,7 +63,7 @@
 
 		//spriteSheet ={"animations": {"run": [0, 25], "stand": [59], "jump": [26, 63]}, "images": ["assets/runningGrant.png"], "frames": {"regX": 0, "height": 292.5, "count": 64, "regY": 0, "width": 165.75}};
 
-		spriteSheet ={"animations": {"run": [1, 8], "stand": [0]}, "images": ["assets/creasprite.png"], "frames": {"regX": 0, "height": 411, "count": 10, "regY": 0, "width": 255}};
+		spriteSheet ={"animations": {"run": [1, 8], "stand": [0],"standleft": [19],"runleft":[12,18] }, "images": ["assets/creaspritefull.png"], "frames": {"regX": 0, "height": 411, "count": 20, "regY": 0, "width": 255}};
 
 		var ss = new SpriteSheet(spriteSheet);
 		myCreature = new BitmapAnimation(ss);
@@ -72,23 +73,26 @@
 		/*ss.getAnimation("stand").frequency = 2;
 		ss.getAnimation("stand").runningRate = 0;*/
 		ss.getAnimation("run").next = "run";
+		ss.getAnimation("runleft").next = "runleft";
+
 		//ss.getAnimation("jump").next = "run";
 		//myCreature.gotoAndPlay("stand");
 
-		// Position the myCreature sprite
-		myCreature.x = 100;
-		myCreature.y = 90;
-		myCreature.scaleX = myCreature.scaleY = 0.8;
 
 		// grab canvas width and height for later calculations:
 		w = canvas.width;
 		h = canvas.height;
 
+		// Position the myCreature sprite
+		myCreature.x = w/4;
+		myCreature.y = 90;
+		myCreature.scaleX = myCreature.scaleY = 0.8;
+
+
 			assets = [];
 
 		manifest = [
-			//{src:"assets/runningmyCreature.png", id:"myCreature"}
-			{src:"assets/creasprite.png", id:"myCreature"}
+			{src:"assets/creaspritefull.png", id:"myCreature"}
 		];
 
 		loader = new PreloadJS();
@@ -113,49 +117,67 @@
 			}
 
 			stage.addChild(myCreature);
-			//stage.onMouseDown = handleJumpStart;
-			//$("#tweet").click()=alert("bidule");
 			
-			//document.getElementById("tweet").onClick = alert("bidule");
-
-
 			Ticker.setFPS(15);
 			Ticker.addListener(window);
 		}
 
 		
-
 		setInterval(function randomMove() {
 			var i = Math.floor(Math.random()*10);
 			
-			if(0<=i && i<5){
-				myCreature.gotoAndPlay("run");
-				mouvement=true;
+			if(sens==true){
+				if(0<=i && i<5){
+					myCreature.gotoAndPlay("run");
+					mouvement=true;
+				}
+				if(5<=i && i<10){
+					myCreature.gotoAndPlay("stand");
+					mouvement= false;
+				}
 			}
-			if(5<=i && i<10){
-				myCreature.gotoAndPlay("stand");
-				mouvement= false;
+			if(sens==false){
+				if(0<=i && i<5){
+					myCreature.gotoAndPlay("runleft");
+					mouvement=true;
+				}
+				if(5<=i && i<10){
+					myCreature.gotoAndPlay("standleft");
+					mouvement= false;
+				}
 			}
 			
 			fp++;
 			document.getElementById("num").innerHTML=fp;
 			document.getElementById("aleatoire").innerHTML=i;
-			//mouvement = !mouvement;
+			
 			if(fp>10){
 				document.getElementById("myDiv").className.replace = "";
 			}
 		},2000);
 		
+		
 		function clickMove() {
 			var i = Math.floor(Math.random()*10);
-			
-			if(0<=i && i<5){
-				myCreature.gotoAndPlay("run");
-				mouvement=true;
+			if(sens==true){
+				if(0<=i && i<5){
+					myCreature.gotoAndPlay("run");
+					mouvement=true;
+				}
+				if(5<=i && i<10){
+					myCreature.gotoAndPlay("stand");
+					mouvement= false;
+				}
 			}
-			if(5<=i && i<10){
-				myCreature.gotoAndPlay("stand");
-				mouvement= false;
+			if(sens==false){
+				if(0<=i && i<5){
+					myCreature.gotoAndPlay("runleft");
+					mouvement=true;
+				}
+				if(5<=i && i<10){
+					myCreature.gotoAndPlay("standleft");
+					mouvement= false;
+				}
 			}
 			
 			fp++;
@@ -169,22 +191,53 @@
 		
 
 		function tick() {
-			var outside = w + 20;
-		
-			var position = myCreature.x + 10;
+			var outside = w-200;
 			
-			if (mouvement) {
-				myCreature.x = (position >= outside) ? -200 : position;
-			} else {
-
+			if(myCreature.x>=200 && myCreature.x<=outside && sens==true ){
+				if (mouvement) {
+					//myCreature.x = ((myCreature.x + 10) >= outside) ? sens=false : (myCreature.x + 10);
+					if((myCreature.x + 10) >= outside){
+						sens=false;
+						myCreature.x=outside;
+					}
+					else{
+						myCreature.x=myCreature.x + 10;
+					}
+				} 	
+			}
+			else if(sens==false){
+				if (mouvement) {
+					//myCreature.x = ((myCreature.x - 10) >= outside) ? sens=true : (myCreature.x - 10);
+					if((myCreature.x - 10) <= 200){
+						sens=false;
+						myCreature.x=200;
+					}
+					else{
+						myCreature.x=myCreature.x - 10;
+					}
+				} 	
 			}
 
-			//myCreature.x = stage.mouseX;
-			//myCreature.y = stage.mouseY;
+
+
+
+			/*if(sens=='normal'){
+				if (mouvement) {
+					myCreature.x = ((myCreature.x + 10) >= outside) ? sens=false : (myCreature.x + 10);
+				} 				
+			}
+			if(sens=='back'){		
+				if (mouvement) {
+					myCreature.x = ((myCreature.x - 10) <= 0) ? sens=true : (myCreature.x - 10);
+				} 
+			}*/
+
 			stage.clear();
 			stage.update();
 		}
+
 	</script>
+
 </head>
 <body onload="init();">
 
@@ -196,7 +249,7 @@
 	</header>
 
 	<div class="canvasHolder">
-		<canvas id="testCanvas" width="1300" height="450"></canvas>
+		<canvas id="canvas" width="1300" height="450"></canvas>
 	</div>
 	<div>Fame Points: </div><div id="num">Nombre</div>
 	<div>Aléatoire: </div><div id="aleatoire">Nombre</div>

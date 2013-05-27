@@ -1,4 +1,5 @@
-mmc
+MeetMyCreature
 ===
 
-Projet d'une créature évolutive, autonome et interactive
+Projet d'une créature évolutive, autonome et interactive.
+
