@@ -61,9 +61,9 @@
 			stationaryPosition = 300;
 			isPassed = false;
 
-		//spriteSheet ={"animations": {"run": [0, 25], "stand": [59], "jump": [26, 63]}, "images": ["assets/runningGrant.png"], "frames": {"regX": 0, "height": 292.5, "count": 64, "regY": 0, "width": 165.75}};
-
-		spriteSheet ={"animations": {"run": [1, 8], "stand": [0],"standleft": [19],"runleft":[12,18] }, "images": ["assets/creaspritefull.png"], "frames": {"regX": 0, "height": 411, "count": 20, "regY": 0, "width": 255}};
+		//spriteSheet ={"animations": {"run": [1, 8], "stand": [0],"standleft": [19],"runleft":[12,18], "eat":[20,25],"eatYes":[26], "eatNo":[27] }, "images": ["assets/creaspritefull.png"], "frames": {"regX": 0, "height": 411, "count": 28, "regY": 0, "width": 255}};
+		spriteSheet ={"animations": {"run": [1, 8], "stand": [0],"standleft": [19],"runleft":[12,18] }, "images": ["assets/creaturenew.png"], "frames": {"regX": 0, "height": 524, "count": 20, "regY": 0, "width": 320}};
+		
 
 		var ss = new SpriteSheet(spriteSheet);
 		myCreature = new BitmapAnimation(ss);
@@ -74,7 +74,8 @@
 		ss.getAnimation("stand").runningRate = 0;*/
 		ss.getAnimation("run").next = "run";
 		ss.getAnimation("runleft").next = "runleft";
-
+		/*ss.getAnimation("eat").next = "eatYes";
+		ss.getAnimation("eat").frequency = 3;*/
 		//ss.getAnimation("jump").next = "run";
 		//myCreature.gotoAndPlay("stand");
 
@@ -85,14 +86,12 @@
 
 		// Position the myCreature sprite
 		myCreature.x = w/4;
-		myCreature.y = 90;
+		myCreature.y = 40;
 		myCreature.scaleX = myCreature.scaleY = 0.8;
 
-
-			assets = [];
-
+		assets = [];
 		manifest = [
-			{src:"assets/creaspritefull.png", id:"myCreature"}
+			{src:"assets/creaturenew.png", id:"myCreature"}
 		];
 
 		loader = new PreloadJS();
@@ -127,24 +126,26 @@
 			var i = Math.floor(Math.random()*10);
 			
 			if(sens==true){
-				if(0<=i && i<5){
+				if(0<=i && i<3){
 					myCreature.gotoAndPlay("run");
 					mouvement=true;
 				}
-				if(5<=i && i<10){
+				if(3<=i && i<6){
 					myCreature.gotoAndPlay("stand");
 					mouvement= false;
 				}
+				
 			}
 			if(sens==false){
-				if(0<=i && i<5){
+				if(0<=i && i<3){
 					myCreature.gotoAndPlay("runleft");
 					mouvement=true;
 				}
-				if(5<=i && i<10){
+				if(3<=i && i<6){
 					myCreature.gotoAndPlay("standleft");
 					mouvement= false;
 				}
+				
 			}
 			
 			fp++;
@@ -160,24 +161,26 @@
 		function clickMove() {
 			var i = Math.floor(Math.random()*10);
 			if(sens==true){
-				if(0<=i && i<5){
+				if(0<=i && i<3){
 					myCreature.gotoAndPlay("run");
 					mouvement=true;
 				}
-				if(5<=i && i<10){
+				if(3<=i && i<6){
 					myCreature.gotoAndPlay("stand");
 					mouvement= false;
 				}
+			
 			}
 			if(sens==false){
-				if(0<=i && i<5){
+				if(0<=i && i<3){
 					myCreature.gotoAndPlay("runleft");
 					mouvement=true;
 				}
-				if(5<=i && i<10){
+				if(3<=i && i<6){
 					myCreature.gotoAndPlay("standleft");
 					mouvement= false;
 				}
+			
 			}
 			
 			fp++;
@@ -246,7 +249,7 @@
 	<div id="loader">toto</div>
 
 	<header id="header" class="EaselJS">
-		<h1><span class="text-product">Meet my <strong> Creature</strong></span> </h1>
+		<h1><span class="text-product">Meet my Creature</span> </h1>
 		<p>Projet d'une créature évolutive, autonome et interactive</p>
 	</header>
 

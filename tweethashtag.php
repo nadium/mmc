@@ -14,7 +14,7 @@
 	<div id="creature"> </div>
 
 	<?php
-		$keywords = array( "#mmc","#mmcphoto","#mmcmusic","#mmcfood");
+		$keywords = array( "#mmcphoto","#mmcmusic","#mmcfood");
 		// On recherche les tweets avec #MeetMyCreature 
 		for ($i=0; $i < count($keywords); $i++) {
 		
