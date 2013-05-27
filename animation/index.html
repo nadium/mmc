@@ -191,7 +191,7 @@
 		
 
 		function tick() {
-			var outside = w-200;
+			var outside = w-400;
 			
 			if(myCreature.x>=200 && myCreature.x<=outside && sens==true ){
 				if (mouvement) {
@@ -199,6 +199,7 @@
 					if((myCreature.x + 10) >= outside){
 						sens=false;
 						myCreature.x=outside;
+						myCreature.gotoAndPlay("runleft");
 					}
 					else{
 						myCreature.x=myCreature.x + 10;
@@ -209,8 +210,9 @@
 				if (mouvement) {
 					//myCreature.x = ((myCreature.x - 10) >= outside) ? sens=true : (myCreature.x - 10);
 					if((myCreature.x - 10) <= 200){
-						sens=false;
+						sens=true;
 						myCreature.x=200;
+						myCreature.gotoAndPlay("run");
 					}
 					else{
 						myCreature.x=myCreature.x - 10;
