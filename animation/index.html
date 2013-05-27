@@ -35,12 +35,12 @@
 	  http://code.createjs.com -->
 
 	<script type="text/javascript">
-
+	var direction = true;
 	var assets;
 	var mouvement = true;
 	var stage;
 	var w, h;
-	var sky, myCreature, ground, hill, hill2;
+	var myCreature;
 	var runningRate, isInWarp, isStationary;
 	var stationaryPosition, isPassed;
 	var fp=0;
@@ -60,11 +60,8 @@
 			stationaryPosition = 300;
 			isPassed = false;
 
-<<<<<<< HEAD
-		//spriteSheet ={"animations": {"run": [0, 25], "stand": [59], "jump": [26, 63]}, "images": ["assets/creasprite.png"], "frames": {"regX": 0, "height": 292.5, "count": 64, "regY": 0, "width": 165.75}};
-=======
 		//spriteSheet ={"animations": {"run": [0, 25], "stand": [59], "jump": [26, 63]}, "images": ["assets/runningGrant.png"], "frames": {"regX": 0, "height": 292.5, "count": 64, "regY": 0, "width": 165.75}};
->>>>>>> Bazar
+
 		spriteSheet ={"animations": {"run": [1, 8], "stand": [0]}, "images": ["assets/creasprite.png"], "frames": {"regX": 0, "height": 411, "count": 10, "regY": 0, "width": 255}};
 
 		var ss = new SpriteSheet(spriteSheet);
@@ -128,14 +125,16 @@
 
 		
 
-		setInterval(function handleJumpStart() {
+		setInterval(function randomMove() {
 			var i = Math.floor(Math.random()*10);
 			
 			if(0<=i && i<5){
 				myCreature.gotoAndPlay("run");
+				mouvement=true;
 			}
 			if(5<=i && i<10){
 				myCreature.gotoAndPlay("stand");
+				mouvement= false;
 			}
 			
 			fp++;
@@ -147,20 +146,18 @@
 			}
 		},2000);
 		
-		function randomMove() {
+		function clickMove() {
 			var i = Math.floor(Math.random()*10);
-			if(0<=i && i<2){
-				//myCreature.gotoAndPlay("jump");
-			}
-			if(2<=i && i<5){
+			
+			if(0<=i && i<5){
 				myCreature.gotoAndPlay("run");
+				mouvement=true;
 			}
-			if(5<=i && i<8){
+			if(5<=i && i<10){
 				myCreature.gotoAndPlay("stand");
+				mouvement= false;
 			}
-			if(i==9){
-
-			}
+			
 			fp++;
 			document.getElementById("num").innerHTML=fp;
 			document.getElementById("aleatoire").innerHTML=i;
@@ -174,7 +171,7 @@
 		function tick() {
 			var outside = w + 20;
 		
-			var position = myCreature.x +10;
+			var position = myCreature.x + 10;
 			
 			if (mouvement) {
 				myCreature.x = (position >= outside) ? -200 : position;
@@ -199,11 +196,11 @@
 	</header>
 
 	<div class="canvasHolder">
-		<canvas id="testCanvas" width="960" height="450"></canvas>
+		<canvas id="testCanvas" width="1300" height="450"></canvas>
 	</div>
 	<div>Fame Points: </div><div id="num">Nombre</div>
 	<div>Aléatoire: </div><div id="aleatoire">Nombre</div>
-	<input type="button" name="tweet" id="tweet" value="Tweet!" onClick="randomMove();"/>
+	<input type="button" name="tweet" id="tweet" value="Tweet!" onClick="clickMove();"/>
 
 	<div id="myDiv" class="hide">jflsdjk </div>
 	<a href="https://twitter.com/share" class="twitter-share-button" data-text="Love my creature" data-lang="fr" data-hashtags="mmc">Tweeter</a>

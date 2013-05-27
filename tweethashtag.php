@@ -14,7 +14,7 @@
 	<div id="creature"> </div>
 
 	<?php
-		$keywords = array( "#mmcphoto","#mmcmusic","#mmcfood");
+		$keywords = array( "#mmc","#mmcphoto","#mmcmusic","#mmcfood");
 		// On recherche les tweets avec #MeetMyCreature 
 		for ($i=0; $i < count($keywords); $i++) {
 		
@@ -52,6 +52,7 @@
 		    $tweet_date = $result['created_at'];  
 		         // ID utilisateur de l'auteur  
 		    $user_id = $result['from_user_id_str']; 
+
 		    echo $user_name.": "; 
 		    echo $tweet_text."<br/>";       
 		}
