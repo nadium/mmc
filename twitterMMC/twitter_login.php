@@ -4,7 +4,7 @@ session_start();
 // The TwitterOAuth instance  
 $twitteroauth = new TwitterOAuth('medqkafL4cjnVrcx1YgKw', 'AgcYnYozGkxvBV6rZZ6r3Fnwj81Yt5lXjufOz8EVvw');  
 // Requesting authentication tokens, the parameter is the URL we will be redirected to  
-$request_token = $twitteroauth->getRequestToken('http://127.0.0.1/Twitter/twitterMMC/twitter_oauth.php');  
+$request_token = $twitteroauth->getRequestToken('http://127.0.0.1/git/mmc/twitterMMC/twitter_oauth.php');  
   
 // Saving them into the session  
 $_SESSION['oauth_token'] = $request_token['oauth_token'];  

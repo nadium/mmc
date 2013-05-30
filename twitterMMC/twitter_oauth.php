@@ -76,16 +76,15 @@ foreach ($home_timeline as $key => $tweet)
 }
 
 ?>
-<form name="input" action="" method="POST">
-        <input type="submit" value="Submit">
+
+<form onSubmit="envoyerMessage()" >
+    <textarea name="tweet" cols="30" rows="3" placeholder="Entrez votre tweet"></textarea><input type="submit" value="Envoyer">
 </form>
-<?php
-
-$texttest = "MMC AGAIN";
-
-if($_POST['submit']){
-    $twitteroauth->post('statuses/update', array('status' => $texttest));  
-}
+<script>
+    function envoyerMessage(){
+        var tweet= "<?php echo $twitteroauth->post('statuses/update', array('status' => $messageTweet));  ?>";
+    }
+</script>
 
 ?>
 
