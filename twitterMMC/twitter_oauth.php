@@ -74,20 +74,25 @@ foreach ($home_timeline as $key => $tweet)
   echo $tweet->created_at .": ";
   echo $tweet->text ."<br><br>";
 }
-
+$_SESSION['toto']= $twitteroauth;
 ?>
-
-<form onSubmit="envoyerMessage()" >
-    <textarea name="tweet" cols="30" rows="3" placeholder="Entrez votre tweet"></textarea><input type="submit" value="Envoyer">
+<script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+<form>
+    <textarea name="tweet" id="texttweet" cols="30" rows="3" placeholder="Entrez votre tweet"></textarea>
+    <input type="button" id="button" value="Envoyer">
 </form>
-
 <script>
-    function envoyerMessage(){
-        var text ="<?php $texttweet= $_POST['tweet']; ?>"
-        var tweet= "<?php echo $twitteroauth->post('statuses/update', array('status' => echo($_POST['tweet']) ));  ?>";
-
-    }
+$(document).ready(function(){
+    $('#button').click(function(){
+        var text = $('#texttweet').val();
+        alert(text);
+        $.ajax({
+            url: "postTweet.php?tweet="+text,
+            context: document.body
+        });
+    })
+})
 </script>
 
-?>
+
 
