@@ -77,14 +77,25 @@ foreach ($home_timeline as $key => $tweet)
 
 ?>
 
-<form onSubmit="envoyerMessage()" >
-    <textarea name="tweet" cols="30" rows="3" placeholder="Entrez votre tweet"></textarea><input type="submit" value="Envoyer">
+<form onSubmit="envoyerMessage()" method="post">
+    <textarea name="tweet" cols="30" rows="3" placeholder="Entrez votre tweet"></textarea>
+    <input type="submit" name="send" value="Envoyer">
 </form>
+<?php 
 
+
+if (isset($_POST['send']))
+{
+    $yaoi= "tototototototototot yaozzzazaeazraezroooiii";
+    echo $yaoi;
+}
+
+ ?>
 <script>
     function envoyerMessage(){
-        var text ="<?php $texttweet= $_POST['tweet']; ?>"
-        var tweet= "<?php echo $twitteroauth->post('statuses/update', array('status' => echo($_POST['tweet']) ));  ?>";
+        var text ="<?php echo $_POST['tweet']; ?>";
+
+        var tweet= "<?php echo $twitteroauth->post('statuses/update', array('status' => $yaoi ));  ?>";
 
     }
 </script>
