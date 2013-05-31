@@ -17,7 +17,7 @@ $_SESSION['access_token'] = $access_token;
 // Let's get the user's info 
 $user_info = $twitteroauth->get('account/verify_credentials'); 
 // Print user's info  
-print_r($user_info);  
+//print_r($user_info);  
 
 mysql_connect('localhost', 'root', 'root');  
 mysql_select_db('twitter');
@@ -48,14 +48,15 @@ if(isset($user_info->error)){
     $_SESSION['oauth_token'] = $result['oauth_token']; 
     $_SESSION['oauth_secret'] = $result['oauth_secret']; 
  
-    header('Location: twitter_update.php');  
+    //header('Location: twitter_update.php');  
 }  
 
 if(!empty($_SESSION['username'])){  
     // User is logged in, redirect  
-    header('Location: twitter_update.php');  
+    //header('Location: twitter_update.php');  
 }  
 ?>
+
 <h2>Hello <?=(!empty($_SESSION['username']) ? '@' . $_SESSION['username'] : 'Guest'); ?></h2>  
 
 <?php if(!empty($_SESSION['username'])){  
@@ -66,39 +67,47 @@ if(!empty($_SESSION['username'])){
 $home_timeline = $twitteroauth->get('statuses/home_timeline', array('count' => 3)); 
 //$nettuts_timeline = $twitteroauth->get('statuses/user_timeline', array('screen_name' => 'nettuts'));  
 //print_r($home_timeline);  
-	
-
+?>
+<div id="blockTweet">
+<?php 
 foreach ($home_timeline as $key => $tweet)
 {
-
-  echo $tweet->created_at .": ";
-  echo $tweet->text ."<br><br>";
+    echo $tweet->created_at .": ";
+    echo $tweet->text ."<br><br>";
 }
-
 ?>
+</div>
 
-<form onSubmit="envoyerMessage()" method="post">
-    <textarea name="tweet" cols="30" rows="3" placeholder="Entrez votre tweet"></textarea>
-    <input type="submit" name="send" value="Envoyer">
-</form>
 <?php 
-
-
-if (isset($_POST['send']))
-{
-    $yaoi= "tototototototototot yaozzzazaeazraezroooiii";
-    echo $yaoi;
-}
-
- ?>
-<script>
-    function envoyerMessage(){
-        var text ="<?php echo $_POST['tweet']; ?>";
-
-        var tweet= "<?php echo $twitteroauth->post('statuses/update', array('status' => $yaoi ));  ?>";
-
-    }
-</script>
-
+$_SESSION['oauthtweet']= $twitteroauth;
 ?>
 
+
+<script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+
+<form>
+    <textarea name="tweet" id="texttweet" cols="30" rows="3" placeholder="Nourrissez votre créature! #FeedPhoto, #FeedMusic, #Feed"></textarea>
+    <input type="button" id="button" value="Envoyer">
+
+</form>
+
+<script>
+
+$(document).ready(function(){
+
+    $('#button').click(function(){
+        var text = $('#texttweet').val();
+
+        $.ajax({
+            url: "postTweet.php?tweet="+text,
+            context: document.body
+        });
+        $('#texttweet').val('');
+    })
+   
+    $.ajaxSetup({ cache: false }); 
+    setInterval(function() {
+        $('#blockTweet').load('refreshTweet.php');       
+    }, 3000);
+})
+</script>
