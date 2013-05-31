@@ -85,7 +85,7 @@ $_SESSION['oauthtweet']= $twitteroauth;
 <script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
 
 <form>
-    <textarea name="tweet" id="texttweet" cols="30" rows="3" placeholder="Entrez votre tweet"></textarea>
+    <textarea name="tweet" id="texttweet" cols="30" rows="3" placeholder="Nourrissez votre créature! #FeedPhoto, #FeedMusic, #Feed"></textarea>
     <input type="button" id="button" value="Envoyer">
 </form>
 
@@ -99,6 +99,7 @@ $(document).ready(function(){
             url: "postTweet.php?tweet="+text,
             context: document.body
         });
+        $('#texttweet').val('');
     })
    
     $.ajaxSetup({ cache: false }); 
@@ -107,6 +108,3 @@ $(document).ready(function(){
     }, 3000);
 })
 </script>
-
-
-
