@@ -1,6 +1,40 @@
+/* Fonts
+*******************************************/
+@font-face {
+    font-family: Verdana;
+    src: url(fonts/Verdana.ttf);
+}
+
+@font-face {
+	font-family : DinCondensed;
+	src: url(fonts/FF_DIN_Condensed_Regular.otf);
+}
+
+@font-face {
+	font-family : AvenirLTBook;
+	src: url(fonts/AvenirLT45.ttf);
+}
+@font-face {
+	font-family : AvenirLTRoman;
+	src: url(fonts/AvenirLT55.ttf);
+}
+
+
+
+/* Général
+*******************************************/
 body, nav, header,footer{
 	width:100%;
 }
+
+a {
+	text-decoration:none;
+}
+
+#content{
+	width: 100%;
+}
+
 /* Navigation
 *******************************************/
 nav {
@@ -11,6 +45,7 @@ nav {
 
 #nav-wrapper{
 	margin:auto;
+	margin-top:19px;
 	width:960px;
 }
 
@@ -21,16 +56,41 @@ nav div#logo{
 	width:162px;
 }
 
-nav ul li{
-	display:inline;
+
+nav div{
+	display:inline-block;
 }
 
-nav ul:nth-child(3){
+#nav-wrapper div:nth-child(2){
+	float:left;
+	margin-left:80px;
+	margin-top:2px;
+}
+
+#nav-wrapper div:nth-child(2) a{
+	color:#fff;
+	font-family:Verdana;
+	font-size:18px;
+}
+
+#nav-wrapper div:nth-child(2) a:not(.first){
+	margin-left:75px;
+}
+
+#nav-wrapper div:nth-child(3){
 	float:right;
+	margin-top:2px;
 }
 
+#nav-wrapper div:nth-child(3) a{
+	color:#fff;
+	font-family:DinCondensed;
+	font-size:18px;
+}
 
-
+#nav-wrapper div:nth-child(3) a:not(.first){
+	margin-left: 50px
+}
 
 
 
@@ -41,28 +101,168 @@ header{
 	height:485px;
 }
 
+#tmc-wrapper{
+	margin:auto;
+	width:960px;
+}
+
+header #tmc{
+	background:url('images/tweetmycreature.png') no-repeat 0 0;
+	display: inline-block;
+	float:left;
+	height:260px;
+	margin:100px 0 0 46px;
+	text-align: center;
+	width:470px;
+}
+
+
+#tmc p{
+	color:#8fc2db;
+	font-family:Verdana;
+	font-size:20px;
+	padding-top:155px;
+}
+
+#tmc a{
+	color:#fff;
+	display:block;
+	font-size:20px;
+	font-family:AvenirLTBook;
+	height:40px;
+	padding-top: 18px;
+	width:320px;
+}
+
+#tmc div{
+	background-color:#2980b9;
+	display:inline-block;
+	height:58px;
+	margin-top:25px;
+	width:320px;
+}
+ 
+
+header .illustration{
+	background:url('images/creature-header.png') no-repeat 0 0;
+	height:433px;
+	float: left;
+	margin: 31px 0 0 46px;
+	width: 281px;
+}
+
 
 
 /* Content
 *******************************************/
-#content div:first-child{
+#first-block div, #second-block div, #third-block div{
+	margin:auto;
+	width: 960px
+}
+
+#first-block{
 	background-color:#2980b9;
 	height:106px;
 }
 
-#content div:nth-child(2){
-	background-color:#67aacf;
-	height:308px;
+#first-block div{
+	color: #fff;
+	font-family: AvenirLTBook;
+	font-size: 30px;
+	padding-top: 35px;
+	height: 71px;
+	text-align: center;
 }
 
-#content div:nth-child(3){
-	background-color:#3498db;
-	height:1399px;
+#second-block{
+	background-color:#67aacf;
+	color:#fff;
+	font-family:AvenirLTBook;
+	font-size:18px;
+	height:308px;
 }
+div#profil, div#hof{
+	float: left;
+	height: 208px;
+	line-height:25px;
+	padding-top: 145px;
+	text-align: center;
+	width: 228px;
+}
+
+div#profil{
+	background:url('images/profil-logo.png') no-repeat 52px 0;
+	margin:65px 0 0 115px;
+}
+div#hof{
+	background:url('images/hof-logo.png') no-repeat 48px 0;
+	margin:65px 0 0 300px;
+}
+
+
+#third-block{
+	background-color:#3498db;
+	height:1445px;
+}
+
+h2{
+	color: #fff;
+	display:inline-block;
+	float: left;
+	font-family:AvenirLTBook;
+	font-size:30px;
+	margin-top: -71px;
+	margin-left: 355px;
+}
+
+#third-block div.creature{
+	float: left;
+	margin-left:95px;
+}
+
+div.creature img, div.creature p{
+	color:#fff;
+	float:left;
+}
+
+div.creature p{
+	font-family:AvenirLTBook;
+	font-size:16px;
+	line-height: 26px;
+	margin:56px 0 0 48px;
+	width:460px;
+}
+
+img#oldCreature{
+	margin-left:30px;
+}
+
+#third-block .button{
+	background-color:#2980b9;
+	float:left;
+	height: 58px;
+	margin:30px 0 0 320px;
+	width: 320px;
+}
+#third-block .button a{
+	color:#fff;
+	display:block;
+	font-family: AvenirLTBook;
+	font-size: 20px;
+	height: 39px;
+	padding:19px 0 0 97px;
+	width: 223px;
+}
+
 
 /* Footer
 *******************************************/
 footer{
 	background-color:#34495e;
+	color:#fff;
+	font-family: Verdana;
+	font-size: 14px;
 	height:42px;
+	padding-top:25px;
+	text-align: center;
 }
