@@ -1,3 +1,5 @@
+/*Animation créature
+******************************************/
 
 var direction = true;
 var assets;
@@ -38,10 +40,6 @@ ss.getAnimation("stand").next = "stand";
 ss.getAnimation("stand").runningRate = 0;*/
 ss.getAnimation("run").next = "run";
 ss.getAnimation("runleft").next = "runleft";
-/*ss.getAnimation("eat").next = "eatYes";
-ss.getAnimation("eat").frequency = 3;*/
-//ss.getAnimation("jump").next = "run";
-//myCreature.gotoAndPlay("stand");
 
 
 // grab canvas width and height for later calculations:
@@ -192,6 +190,10 @@ function tick() {
 	stage.update();
 }
 
+
+/* Gestion de twitter
+******************************************/
+
 $(document).ready(function(){
     var i=0;
     var array = ["#Feed","Bonjour"];
@@ -201,9 +203,12 @@ $(document).ready(function(){
         var text = $('#texttweet').val();
   
         $.ajax({
-            url: "./twitterClient/postTweet.php?tweet="+text,
-            context: document.body
-        });
+			url: "./twitterClient/postTweet.php",
+			type: "POST",
+			data: "tweet="+text,
+			context: document.body
+		});
+
 
         for(i=0;i<array.length;i++){
             string=array[i];

@@ -82,5 +82,9 @@ foreach ($home_timeline as $key => $tweet)
 $_SESSION['oauthtweet']= $twitteroauth;
 ?>
 
+<form>
+    <textarea name="tweet" id="texttweet" cols="30" rows="3" placeholder="Nourrissez votre créature! #FeedPhoto, #FeedMusic, #Feed"></textarea>
+    <input type="button" id="button" value="Envoyer">
+</form>
 
 
