@@ -11,7 +11,7 @@
 		<div id="nav-wrapper">
 			<div id="logo">&nbsp;</div>
 			<div>
-				<a class="first" href="">MY PROFILE</a>
+				<a class="first" href="profile.php">MY PROFILE</a>
 				<a href="hof.php">HALL OF FAME</a>
 				<a href="">ABOUT</a>
 			</div>
