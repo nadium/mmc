@@ -10,7 +10,7 @@ var sens= true;
 var myCreature;
 var runningRate, isInWarp, isStationary;
 var stationaryPosition, isPassed;
-var fp=0;
+var fp=10;
 function init() {
 	if (window.top != window) {
 		document.getElementById("header").style.display = "none";
@@ -27,19 +27,29 @@ function init() {
 	stationaryPosition = 300;
 	isPassed = false;
 
-spriteSheet ={"animations": {"run": [1, 8], "stand": [0],"standleft": [19],"runleft":[12,18] }, "images": ["./assets/creaturenew.png"], "frames": {"regX": 0, "height": 524, "count": 20, "regY": 0, "width": 320}};
+spriteSheet ={"animations": {"run": [1, 8], "stand": [0],"standleft": [19],"runleft":[12,18],"eat":[20,24], "eatYes":[25], "eatNo":[26] }, "images": ["./assets/evolution0.png"], "frames": {"regX": 0, "height": 524, "count": 26, "regY": 0, "width": 320}};
+		
+spriteSheet1 ={"animations": {"run": [1, 8], "stand": [0],"standleft": [19],"runleft":[12,18],"eat":[20,24], "eatYes":[25], "eatNo":[26] }, "images": ["./assets/evolution1.png"], "frames": {"regX": 0, "height": 524, "count": 26, "regY": 0, "width": 320}};
 
 
-var ss = new SpriteSheet(spriteSheet);
+if(fp<10){
+	var ss = new SpriteSheet(spriteSheet);
+}
+else if(9<fp){
+	var ss = new SpriteSheet(spriteSheet1);
+}	
 myCreature = new BitmapAnimation(ss);
 
 // Set up looping
 ss.getAnimation("stand").next = "stand";
-/*ss.getAnimation("stand").frequency = 2;
-ss.getAnimation("stand").runningRate = 0;*/
 ss.getAnimation("run").next = "run";
 ss.getAnimation("runleft").next = "runleft";
-
+ss.getAnimation("eat").next = "eatYes";
+ss.getAnimation("eat").frequency = 5;
+ss.getAnimation("eatYes").next = "eatYes";
+ss.getAnimation("eatYes").frequency = 4;
+ss.getAnimation("eatNo").next = "eatNo";
+ss.getAnimation("eatNo").frequency = 4;
 
 // grab canvas width and height for later calculations:
 w = canvas.width;
@@ -51,9 +61,16 @@ myCreature.y = 40;
 myCreature.scaleX = myCreature.scaleY = 0.8;
 
 assets = [];
-manifest = [
-	{src:"./assets/creaturenew.png", id:"myCreature"}
-];
+if(fp<10){
+	manifest = [
+		{src:"assets/evolution0.png", id:"myCreature"}
+	];
+}
+else if(9<fp){
+	manifest = [
+		{src:"assets/evolution1.png", id:"myCreature"}
+	];
+}	
 
 loader = new PreloadJS();
 loader.useXHR = false;  // XHR loading is not reliable when running locally.
@@ -179,8 +196,8 @@ $(document).ready(function(){
         $('#texttweet').val('');
     })
    
-    /*$.ajaxSetup({ cache: false }); 
+    $.ajaxSetup({ cache: false }); 
     setInterval(function() {
         $('#blockTweet').load('./twitterClient/refreshTweet.php');       
-    }, 3000);*/
+    }, 3000);
 })

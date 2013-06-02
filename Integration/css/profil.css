@@ -58,7 +58,7 @@
 	background-color:#fff;
 	border:1px solid #2c81ba;
 	border-radius:5px;
-	height: 666px;
+	height: 600px;
 	margin-left: 93px;
 	padding-top:10px ;
 	width: 510px; 
@@ -79,4 +79,5 @@
 	height: 53px;
 	margin-top: -1px;
 	padding-top: 17px;
+	padding-left: 10px;
 }

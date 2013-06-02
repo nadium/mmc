@@ -86,8 +86,6 @@ session_start(); ?>
 		    $_SESSION['oauth_provider'] = $result['oauth_provider']; 
 		    $_SESSION['oauth_token'] = $result['oauth_token']; 
 		    $_SESSION['oauth_secret'] = $result['oauth_secret']; 
-		 
- 
 		}  
 
 		if(!empty($_SESSION['username'])){  
@@ -121,7 +119,6 @@ session_start(); ?>
 							$home_timeline = $_SESSION['oauthtweet']->get('statuses/home_timeline', array('count' => 8)); 
 							foreach ($home_timeline as $key => $tweet){
 							    echo "<li>";
-							   
 							    echo $tweet->created_at .": ";
 							    echo $tweet->text;
 							    echo "</li>";
