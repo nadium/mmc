@@ -18,7 +18,6 @@
 			
 			<div class="illustration">&nbsp;</div>
 		</div>
-
 	</header>
 	<section id="content">
 		<div id="first-block">

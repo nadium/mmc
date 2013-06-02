@@ -12,9 +12,8 @@ include('db.php'); // Importation de la connexion a la BDD
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<?php include_once("partial/header.php"); ?>
+	<?php include_once("partial/header.php"); ?>	
 	
-		
 	<section id="sectionlogin">
 		<h1>Hello ! Your creature awaits you !</h1>
 

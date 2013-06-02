@@ -590,3 +590,69 @@ input#login[type=button]{
 }
 /**###############################################################################################################**/
 /**################################################ PROFILE ################################################**/
+
+
+#sectionprofile{
+height:838px;
+
+}
+#pseudo{
+	text-transform: uppercase;
+	color:#e2ddd9;
+	box-shadow: black 2px;
+	font-family: Fago;
+	letter-spacing: 10px;
+	font-size: 30px;
+	text-align: center;
+	padding-top:32px;
+}
+
+#headerprofile{
+	height: 80px;
+}
+div.bar{
+	display: inline-block;
+	margin-left: 380px;
+	width: 473px;
+	height: 18px;
+	background-color: white;
+	border: 1px white solid;
+}
+
+#life{
+	background-color: #ee4a54;
+	/*width: 400px;*/
+	height:18px;
+}
+
+#xp{
+	background-color: #5de820;
+	/*width: 400px;*/
+	height:18px;
+}
+
+.stats{
+	color: white;
+	font-family: Verdana;
+	display: inline;
+	font-size: 24px;
+	margin-left: 9px;
+}
+
+#creatureprofile{
+	background:url('images/creature-old.png') no-repeat 4px 23px;
+	height: 411px;
+	width: 228px;
+	float: right;
+	margin-top:84px;
+	margin-right: 180px;
+
+}
+
+#details{
+	font-family: AvenirLTBook;
+	font-size: 30px;
+	color: white;
+	margin-left: 120px;
+	margin-top: 120px;
+}

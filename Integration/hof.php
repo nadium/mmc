@@ -13,6 +13,7 @@ include('db.php'); // Importation de la connexion a la BDD
 </head>
 <body>
 	<?php include_once("partial/header.php"); ?>
+
 	<header id="headerhof">
 		
 				<h1>Welcome to the Hall of Fame!</h1>

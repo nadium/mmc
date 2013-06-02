@@ -16,7 +16,7 @@ include('db.php'); // Importation de la connexion a la BDD
 		<div id="nav-wrapper">
 			<div id="logo">&nbsp;</div>
 			<div>
-				<a class="first" href="">MY PROFILE</a>
+				<a class="first" href="profile.php">MY PROFILE</a>
 				<a href="hof.php">HALL OF FAME</a>
 				<a href="">ABOUT</a>
 			</div>
@@ -26,22 +26,24 @@ include('db.php'); // Importation de la connexion a la BDD
 			</div>
 		</div>
 	</nav>
-	<header id="headerlogin">
+	<header id="headerprofile">
 		
-				<h1 style="text-transformation:none;">Hello ! Your creature awaits you !</h1>
+				<h3 id="pseudo">akajiro</h3>
 
 	</header>
-	<section>
+	<section id="sectionprofile">
 		
-		<div class="contentlogin">
-			<form action="" method="post">
-				<input type="text" name="login" placeholder="Login"/>
-				<input type="password" name="pw" placeholder="Password"/>
+		<div class="bar"><div id="life" style="width:400px;"></div></div><span class="stats">90 HP</span><br> <br>
+		<div class="bar"><div id="xp" style="width:200px;"></div></div> <span class="stats">65 XP</span>
 
-				<input type="submit" name"send" value="LOGIN TO YOUR ACCOUNT">
-			</form>
+		<div id="creatureprofile"></div>
+		
+		<div id="details">
+		<p style="font-family:Fago;">MY CREATURE</p> <br/>
 
-
+			Name:	Totox <br/>
+			Mood:	Hungry	<br/>
+			Level: Beginner	<br/>
 		</div>
 
 	</section>
