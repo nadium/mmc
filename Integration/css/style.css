@@ -567,18 +567,19 @@ margin: auto;}
 }
 
 .ortwitter{
-color:white;
-margin-top: 20px;
-margin-bottom: 20px;
-text-align: center;
-font-family: Fago;
-font-size: 35px;
+	color:white;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	text-align: center;
+	font-family: Fago;
+	font-size: 35px;
 
 }
 
- input[type=button]{
+input#login[type=button]{
 	border:0;
-margin-left: 450px;
+	margin-left: 450px;
+	cursor: pointer;
 	outline:none;
 	background-color:#2EC1FE;
 	width:385px;

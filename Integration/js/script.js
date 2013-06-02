@@ -27,7 +27,6 @@ function init() {
 	stationaryPosition = 300;
 	isPassed = false;
 
-//spriteSheet ={"animations": {"run": [1, 8], "stand": [0],"standleft": [19],"runleft":[12,18], "eat":[20,25],"eatYes":[26], "eatNo":[27] }, "images": ["assets/creaspritefull.png"], "frames": {"regX": 0, "height": 411, "count": 28, "regY": 0, "width": 255}};
 spriteSheet ={"animations": {"run": [1, 8], "stand": [0],"standleft": [19],"runleft":[12,18] }, "images": ["./assets/creaturenew.png"], "frames": {"regX": 0, "height": 524, "count": 20, "regY": 0, "width": 320}};
 
 
@@ -180,8 +179,8 @@ $(document).ready(function(){
         $('#texttweet').val('');
     })
    
-    $.ajaxSetup({ cache: false }); 
+    /*$.ajaxSetup({ cache: false }); 
     setInterval(function() {
         $('#blockTweet').load('./twitterClient/refreshTweet.php');       
-    }, 3000);
+    }, 3000);*/
 })

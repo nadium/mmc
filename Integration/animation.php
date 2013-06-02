@@ -40,20 +40,7 @@ session_start(); ?>
 </head>
 <body onload="init();">
 
-	<nav>
-		<div id="nav-wrapper">
-			<div id="logo">&nbsp;</div>
-			<div>
-				<a class="first" href="">MY PROFILE</a>
-				<a href="hof.php">HALL OF FAME</a>
-				<a href="">ABOUT</a>
-			</div>
-			<div>
-				<a class="first" href="">Sign Up</a>
-				<a href="twitterClient/twitter_login.php">Log In</a>
-			</div>
-		</div>
-	</nav>
+	<?php include_once("partial/header.php"); ?>
 
 	<?php if(!empty($_GET['oauth_verifier']) && !empty($_SESSION['oauth_token']) && !empty($_SESSION['oauth_token_secret'])){  
 		    // We've got everything we need  
@@ -126,18 +113,24 @@ session_start(); ?>
 				</div>
 			</div>
 
-			<div id="blockTweet">
-
-				<div>
-					<?php 
-						$home_timeline = $_SESSION['oauthtweet']->get('statuses/home_timeline', array('count' => 5)); 
-						foreach ($home_timeline as $key => $tweet){
-						    echo $tweet->created_at .": ";
-						    echo $tweet->text ."<br><br>";
-						}
-					?>
+			<div id="blockTweet-wrapper">
+				<p>Tweets</p>
+				<div id="blockTweet">
+					<ul>
+						<?php 
+							$home_timeline = $_SESSION['oauthtweet']->get('statuses/home_timeline', array('count' => 8)); 
+							foreach ($home_timeline as $key => $tweet){
+							    echo "<li>";
+							   
+							    echo $tweet->created_at .": ";
+							    echo $tweet->text;
+							    echo "</li>";
+							}
+						?>
+					</ul>
 				</div>
 			</div>
+			
 		</div>
 
 

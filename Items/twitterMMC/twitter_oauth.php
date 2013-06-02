@@ -66,7 +66,7 @@ if(!empty($_SESSION['username'])){
 //$home_timeline = $twitteroauth->get('statuses/home_timeline'); 
 $home_timeline = $twitteroauth->get('statuses/home_timeline', array('count' => 3)); 
 //$nettuts_timeline = $twitteroauth->get('statuses/user_timeline', array('screen_name' => 'nettuts'));  
-//print_r($home_timeline);  
+print_r($home_timeline);  
 ?>
 <div id="blockTweet">
 <?php 
