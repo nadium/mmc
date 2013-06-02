@@ -110,49 +110,8 @@ setInterval(function randomMove() {
 		
 	}
 	
-	fp++;
-	document.getElementById("num").innerHTML=fp;
-	document.getElementById("aleatoire").innerHTML=i;
-	
-	if(fp>10){
-		document.getElementById("myDiv").className.replace = "";
-	}
+
 },2000);
-
-
-function clickMove() {
-	var i = Math.floor(Math.random()*10);
-	if(sens==true){
-		if(0<=i && i<3){
-			myCreature.gotoAndPlay("run");
-			mouvement=true;
-		}
-		if(3<=i && i<6){
-			myCreature.gotoAndPlay("stand");
-			mouvement= false;
-		}
-	
-	}
-	if(sens==false){
-		if(0<=i && i<3){
-			myCreature.gotoAndPlay("runleft");
-			mouvement=true;
-		}
-		if(3<=i && i<6){
-			myCreature.gotoAndPlay("standleft");
-			mouvement= false;
-		}
-	
-	}
-	
-	fp++;
-	document.getElementById("num").innerHTML=fp;
-	document.getElementById("aleatoire").innerHTML=i;
-	//mouvement = !mouvement;
-	if(fp>10){
-		document.getElementById("myDiv").className.replace = "";
-	}
-}
 
 
 function tick() {

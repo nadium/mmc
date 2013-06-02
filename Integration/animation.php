@@ -2,11 +2,12 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>EaselJS: Sprite Sheet Example</title>
+	<title>Tweet My Creature</title>
 
-	<link href="assets/demoStyles.css" rel="stylesheet" type="text/css" />
+	
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/style.css">
+	<link href="css/profil.css" rel="stylesheet" type="text/css" />
 	
 	<script>
 		// this sets the namespace for CreateJS to the window object, so you can instantiate objects without specifying 
@@ -51,17 +52,22 @@
 			</div>
 		</div>
 	</nav>
-	<div id="loader">toto</div>
 
-	
-	<div class="canvasHolder">
-		<canvas id="canvas" width="1300" height="450"></canvas>
+	<div id="loader"></div>
+
+	<div class="content">
+		<div id="welcome">Welcome Back $user !</div>
+		<div class="canvasHolder">
+			<canvas id="canvas" width="1300" height="450"></canvas>
+		</div>
 	</div>
-	<div>Fame Points: </div><div id="num">Nombre</div>
-	<div>Aléatoire: </div><div id="aleatoire">Nombre</div>
-	<input type="button" name="tweet" id="tweet" value="Tweet!" onClick="clickMove();"/>
+	
 
-	<div id="myDiv" class="hide">jflsdjk </div>
+
+
+
+
+
 	<footer>©Tweet my creature</footer>
 </body>
 </html>
