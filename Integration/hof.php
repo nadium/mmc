@@ -17,12 +17,12 @@ include('db.php'); // Importation de la connexion a la BDD
 			<div id="logo">&nbsp;</div>
 			<div>
 				<a class="first" href="">MY PROFILE</a>
-				<a href="">HALL OF FAME</a>
+				<a href="hof.php">HALL OF FAME</a>
 				<a href="">ABOUT</a>
 			</div>
 			<div>
 				<a class="first" href="">Sign Up</a>
-				<a href="">Log In</a>
+				<a href="login.php">Log In</a>
 			</div>
 		</div>
 	</nav>

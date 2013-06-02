@@ -17,7 +17,7 @@
 			</div>
 			<div>
 				<a class="first" href="">Sign Up</a>
-				<a href="">Log In</a>
+				<a href="login.php">Log In</a>
 			</div>
 		</div>
 	</nav>

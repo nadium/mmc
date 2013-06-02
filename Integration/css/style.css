@@ -38,6 +38,8 @@ a {
 	width: 100%;
 }
 
+
+
 /* Navigation
 *******************************************/
 nav {
@@ -158,6 +160,10 @@ header .illustration{
 
 /* Content
 *******************************************/
+section{
+	background-color:#3498db;
+}
+
 #first-block div, #second-block div, #third-block div{
 	margin:auto;
 	width: 960px
@@ -272,8 +278,14 @@ footer{
 
 
 
+
 /**###############################################################################################################**/
 /**################################################ HALL OF FAME ################################################**/
+
+
+
+
+
 #headerhof{
 	height:184px;
 	text-align: center;
@@ -456,3 +468,124 @@ top:310px;
 	top:290px;
 	position: relative;
 }
+
+
+
+
+
+
+/**###############################################################################################################**/
+/**################################################ LOGIN ################################################**/
+
+section h1{
+
+	color:white;
+	font-family: Fago;
+	font-size: 36px;
+	text-align: center;
+	padding-top:100px;
+	padding-bottom:136px;
+
+}
+
+#sectionlogin{
+	background-color:#3498db;
+
+}
+
+
+.contentlogin{
+	background-color:#34495e;
+	height: 360px;
+	width: 445px;
+	margin: 0 auto;
+}
+
+.wraplogin{
+	height: 610px;
+	width: 100%;
+}
+.flogin{
+padding-top: 30px;
+width: 385px;
+margin: auto;}
+
+.flogin input{
+	border:0;
+	outline:none;
+	margin-top: 12px;
+}
+
+.flogin input[type=text], input[type=password]{
+	
+	background-color: white;
+	height:36px;
+	margin-left: 50px;
+}
+
+.flogin input[type=submit]{
+	border:0;
+	outline:none;
+	margin-top: 35px;
+	background-color:#c74c4c;
+	width:385px;
+	height:65px;
+	color:white;
+	font-family: Fago;
+	font-size: 16px;
+}
+
+.imguser{
+	background:url('images/user.png') no-repeat 4px 8px;
+	width:385px;
+	height:65px;
+	background-color: white;
+	margin-top: 30px;
+}
+
+.imgkey{
+	margin-top: 23px;
+	background:url('images/key.png') no-repeat 4px 23px;
+	width:385px;
+	height:65px;
+	background-color: white;
+}
+
+
+.flogin span:nth-child(1){
+	font-family: Fargo;
+	font-weight: bold;
+	font-size: 16px;
+	color:white;
+}
+
+.flogin span:nth-child(2) a{
+	font-family: AvenirLTBook;
+	font-size: 16px;
+	float: right;
+	color: #878484;
+}
+
+.ortwitter{
+color:white;
+margin-top: 20px;
+margin-bottom: 20px;
+text-align: center;
+font-family: Fago;
+font-size: 35px;
+
+}
+
+ input[type=button]{
+	border:0;
+margin-left: 450px;
+	outline:none;
+	background-color:#2EC1FE;
+	width:385px;
+	height:65px;
+	color:white;
+	font-family: Fago;
+	font-size: 16px;
+}
+/**###############################################################################################################**/
+/**################################################ PROFILE ################################################**/
