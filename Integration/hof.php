@@ -60,21 +60,32 @@ $resuser=mysql_query($sqluser);
 			$i=2;
 			while($tabuser=mysql_fetch_array($resuser))
 			{
-				
-			echo '<tr><td style="font-weight:bold; font-family:Fago; font-size:24px; color:616161;">#'.$i.'</td>';
-			echo '<td><div id="imgcreature"></div> <p class="username">'.$tabuser["US_twitter"].'</p></td>';
-			echo '<td>'.$tabuser["US_point"].' points </td>';
-			echo '<td>'.$tabuser["US_music"].' Tweets </td>'; //changement de dernière minutes, US_musique = tweets
-			echo '</tr>';
+				if($i%2 == 0 )
+				{
+					echo '<tr><td id="bgfonce" style="font-weight:bold; font-family:Fago; font-size:24px; color:#616161;">#'.$i.'</td>';
+					echo '<td id="bgfonce"><div id="imgcreature"></div> <p class="username">'.$tabuser["US_twitter"].'</p></td>';
+					echo '<td id="bgfonce">'.$tabuser["US_point"].' points </td>';
+					echo '<td id="bgfonce">'.$tabuser["US_music"].' Tweets </td>'; //changement de dernière minutes, US_musique = tweets
+					echo '</tr>';
+				}
+                if($i%2 != 0 )
+                {
+                        echo '<tr><td id="bgclair"style="font-weight:bold; font-family:Fago; font-size:24px; color:#616161;">#'.$i.'</td>';
+                        echo '<td id="bgclair"><div id="imgcreature"></div> <p class="username">'.$tabuser["US_twitter"].'</p></td>';
+                        echo '<td id="bgclair">'.$tabuser["US_point"].' points </td>';
+                        echo '<td id="bgclair">'.$tabuser["US_music"].' Tweets </td>'; //changement de dernière minutes, US_musique = tweets
+                        echo '</tr>';
+                }
+
 			$i++;		
 			}
 
 			?>
 
 			</table>
+	<a href="#"><div class="arrow"></div></a>
 
 		</div>
-
 
 
 	</section>

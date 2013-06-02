@@ -332,11 +332,22 @@ font-size: 18px;
 font-family: Verdana;
 color: #343434;
 border:1px solid white;
-background-color: #cdcdcd;
+/*background-color: #cdcdcd;*/
 text-align: center;
 vertical-align: middle;
 
 /*padding-top: 42px;*/
+}
+
+
+td#bgfonce{
+
+	background-color:#cdcdcd;
+}
+
+td#bgclair{
+
+	background-color: #e2e2e2;
 }
 
 div#imgcreature{
@@ -370,7 +381,7 @@ margin-left: 10px;
 		height: 172px;
 		width:172px;
 		position: absolute;
-left:210px;
+left:150px;
 top:130px;
 
 
@@ -383,7 +394,7 @@ top:130px;
 	text-align: left;
 	margin-left:41px;
 	position: absolute;
-	left:210px;
+	left:160px;
 	top:49px;
 
 
@@ -405,7 +416,7 @@ margin-top: 75px;
 	height: 262px;
 	width: 262px;
 	position: absolute;
-	left:450px;
+	left:400px;
 	top:50px;
 
 
@@ -422,7 +433,7 @@ margin-top: 75px;
 	width: 262px;
 	border-radius: 50%;
 	position: absolute;
-	left:860px;
+	left:760px;
 	top:50px;
 }
 
@@ -433,6 +444,15 @@ color:white;
 text-align: left;
 margin-left:20px;
 position: absolute;
-left:210px;
+left:150px;
 top:310px;
+}
+
+.arrow{
+	background:url('images/arrow.png') no-repeat;
+	height: 21px;
+	width: 27px;
+	margin: 0 auto;
+	top:290px;
+	position: relative;
 }
