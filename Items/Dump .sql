@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Lun 20 Mai 2013 à 17:04
+-- Généré le: Dim 02 Juin 2013 à 23:03
 -- Version du serveur: 5.5.29
 -- Version de PHP: 5.4.10
 
@@ -28,7 +28,7 @@ CREATE TABLE `Creature` (
   `HU_id` int(11) NOT NULL,
   PRIMARY KEY (`CR_id`),
   KEY `HU_id` (`HU_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Contenu de la table `Creature`
@@ -38,7 +38,9 @@ INSERT INTO `Creature` (`CR_id`, `CR_nom`, `CR_vie`, `CR_faim`, `HU_id`) VALUES
 (1, 'Cain', 100, 100, 2),
 (2, 'Yaoi', 100, 100, 1),
 (3, 'Uke', 30, 50, 2),
-(4, 'Seme', 51, 88, 2);
+(4, 'Seme', 51, 88, 2),
+(5, 'tutu', 12, 34, 4),
+(6, 'didoo', 54, 90, 1);
 
 -- --------------------------------------------------------
 
@@ -51,7 +53,7 @@ CREATE TABLE `Humeur` (
   `HU_nom` varchar(200) NOT NULL,
   `HU_img` varchar(300) NOT NULL,
   PRIMARY KEY (`HU_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Contenu de la table `Humeur`
@@ -59,7 +61,9 @@ CREATE TABLE `Humeur` (
 
 INSERT INTO `Humeur` (`HU_id`, `HU_nom`, `HU_img`) VALUES
 (1, 'Joie', ''),
-(2, 'Tristesse', '');
+(2, 'Tristesse', ''),
+(3, 'Faim', ''),
+(4, 'calme', '');
 
 -- --------------------------------------------------------
 
@@ -78,18 +82,20 @@ CREATE TABLE `User` (
   `US_food` int(11) NOT NULL,
   `US_photo` int(11) NOT NULL,
   PRIMARY KEY (`US_id`),
-  KEY `CR_id` (`CR_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+  UNIQUE KEY `CR_id` (`CR_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Contenu de la table `User`
 --
 
 INSERT INTO `User` (`US_id`, `US_twitter`, `US_mail`, `US_pw`, `US_point`, `CR_id`, `US_music`, `US_food`, `US_photo`) VALUES
-(1, 'Cainael', 'cainael@hotmail.fr', 'toto', 1000, 1, 110, 98, 5),
-(2, 'Nadium', 'nadium@gmail.com', 'titi', 10, 2, 66, 678, 78),
-(3, 'Loveless', 'loveless@re.com', 'loveless', 67, 2, 890, 8, 987),
-(4, 'Manga', 'mangas@hr.com', 'mangas', 2500, 4, 980, 37, 6);
+(1, 'Cainael', 'cainael@hotmail.fr', 'toto', 1234, 1, 1104, 98, 5),
+(2, 'Nadium', 'nadium@gmail.com', 'titi', 2034, 2, 1766, 678, 78),
+(3, 'Akajiro', 'loveless@re.com', 'loveless', 1067, 3, 830, 8, 987),
+(4, 'Deadmush', 'mangas@hr.com', 'mangas', 2004, 4, 980, 37, 6),
+(5, 'Teemo', 'teemo@hotmail.fr', 'teemo', 343, 6, 34, 23, 2),
+(6, 'Didoo', 'toto@gmail.fr', 'toto', 459, 5, 300, 23, 45);
 
 --
 -- Contraintes pour les tables exportées
