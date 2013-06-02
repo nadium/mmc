@@ -18,7 +18,10 @@
 	font-family : AvenirLTRoman;
 	src: url(fonts/AvenirLT55.ttf);
 }
-
+@font-face {
+	font-family : Fago;
+	src: url(fonts/FagoNo-Black.otf);
+}
 
 
 /* Général
@@ -265,4 +268,137 @@ footer{
 	height:42px;
 	padding-top:25px;
 	text-align: center;
+}
+
+
+
+/**###############################################################################################################**/
+/**################################################ HALL OF FAME ################################################**/
+#headerhof{
+	height:184px;
+	text-align: center;
+	padding-top: 92px;
+}
+
+#headerhof h1{
+	color:white;
+	text-transform: uppercase;
+	font-family: Fago;
+	font-size: 30px;
+}
+
+#headerhof div{
+color:#343434;
+font-family: Verdana;
+font-size: 18px;
+padding-top: 5px;
+}
+
+#no1{
+height:403px;
+width:100%;
+background-color:#2a3a4a;
+margin: 0 auto;
+text-align: center;
+	
+}
+
+#tableuser{
+	background-color:#828f9c;
+	height:572px;
+	width:960px;
+	margin:0 auto;
+
+}
+
+#contenthof{
+	background-color:#3498db;
+}
+
+table#tableother{
+	border:1px solid white;
+	width: 666px;
+	margin: 0 auto;
+}
+
+table#tableother tr{
+	height:85px;
+	text-align: center;
+}
+
+table#tableother td{
+
+border:1px solid white;
+background-color: #cdcdcd;
+text-align: center;
+vertical-align: middle;
+
+/*padding-top: 42px;*/
+}
+
+div#imgcreature{
+	background:url('images/creature-new.png') no-repeat;
+	background-size: 38px 72px;
+	background-color: #c1bdbd;
+	height:78px;
+	width: 78px;
+	background-position: center;
+
+}
+#tablewiner{
+	margin: 0 auto;
+	top: 201.1px;
+}
+
+#no1 .imgwinner{
+		background:url('images/creature-evolved.png') no-repeat;
+		background-size: 117px 169px;
+		background-position: center;
+		background-color:#272829;
+		height: 172px;
+		width:172px;
+
+}
+
+#no1 .number{
+	color:#cfa45b;
+	font-size: 58px;
+	font-family: Fago;
+	text-align: left;
+	margin-left:41px;
+
+} 
+
+#no1 .point{
+	border:solid #cfa45b 5px;
+	display: inline;
+	border-radius: 50%;
+	font-size: 58px;
+	font-family: Verdana;
+	color:white;
+	text-transform: uppercase;
+	height: 262px;
+	width: 262px;
+}
+
+#no1 .nbtweet{
+	border:solid #cfa45b 5px;
+	display: inline;
+	font-size: 58px;
+	font-family: Verdana;
+	color:white;
+	text-transform: uppercase;
+	height: 262px;
+	width: 262px;
+	border-radius: 50%;
+
+
+}
+
+#no1 .userwin{
+font-size: 36px;
+font-family: Verdana;
+color:white;
+text-align: left;
+margin-left:20px;
 }

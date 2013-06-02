@@ -12,7 +12,7 @@
 			<div id="logo">&nbsp;</div>
 			<div>
 				<a class="first" href="">MY PROFILE</a>
-				<a href="">HALL OF FAME</a>
+				<a href="hof.php">HALL OF FAME</a>
 				<a href="">ABOUT</a>
 			</div>
 			<div>
