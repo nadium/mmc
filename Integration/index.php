@@ -62,7 +62,7 @@
 						to the Hall of Fame !
 					</p>
 				</div>
-				<div class="button"><a href="">Get your own!</a></div>
+				<div class="button"><a href="login.php">Get your own!</a></div>
 			</div>
 		</div>
 	</section>
