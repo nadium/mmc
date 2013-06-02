@@ -45,9 +45,10 @@ $resuser=mysql_query($sqluser);
 				$tabuser1=mysql_fetch_array($resuser); 
 
 						echo '<div class="number">#1</div>';
-						echo '<div class="imgwinner"></div><div class="userwin">'.$tabuser1["US_twitter"].'</div>';
-						echo '<div class="point">'.$tabuser1["US_point"].' <font size="30px">points</font></div> ';
-						echo '<div class="nbtweet"><font size="58px">'.$tabuser1["US_music"].' </font> <font size="30px">tweets</font> </div>'; //changement de dernière minutes, US_musique = tweets
+						echo '<div class="imgwinner"></div>
+						<div class="userwin">'.$tabuser1["US_twitter"].'</div>';
+						echo '<div class="point"><font size="58px"><p id="textpoint">'.$tabuser1["US_point"].' </font><font size="30px">points</p></font></div> ';
+						echo '<div class="nbtweet"><font size="58px"><p id="textpoint">'.$tabuser1["US_music"].' </font> <font size="30px">tweets</p></font> </div>'; //changement de dernière minutes, US_musique = tweets
 						echo '';
 			?>
 			
@@ -60,8 +61,8 @@ $resuser=mysql_query($sqluser);
 			while($tabuser=mysql_fetch_array($resuser))
 			{
 				
-			echo '<tr><td>#'.$i.'</td>';
-			echo '<td><div id="imgcreature"></div>'.$tabuser["US_twitter"].'</td>';
+			echo '<tr><td style="font-weight:bold; font-family:Fago; font-size:24px; color:616161;">#'.$i.'</td>';
+			echo '<td><div id="imgcreature"></div> <p class="username">'.$tabuser["US_twitter"].'</p></td>';
 			echo '<td>'.$tabuser["US_point"].' points </td>';
 			echo '<td>'.$tabuser["US_music"].' Tweets </td>'; //changement de dernière minutes, US_musique = tweets
 			echo '</tr>';

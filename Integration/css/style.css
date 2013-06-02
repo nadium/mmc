@@ -300,11 +300,12 @@ width:100%;
 background-color:#2a3a4a;
 margin: 0 auto;
 text-align: center;
+position: relative;
 	
 }
 
 #tableuser{
-	background-color:#828f9c;
+	background-color:#e1e1e1;
 	height:572px;
 	width:960px;
 	margin:0 auto;
@@ -327,7 +328,9 @@ table#tableother tr{
 }
 
 table#tableother td{
-
+font-size: 18px;
+font-family: Verdana;
+color: #343434;
 border:1px solid white;
 background-color: #cdcdcd;
 text-align: center;
@@ -343,8 +346,17 @@ div#imgcreature{
 	height:78px;
 	width: 78px;
 	background-position: center;
+	float: left;
 
 }
+
+.username{
+margin-top:30px;
+float: left;
+margin-left: 10px;
+
+}
+
 #tablewiner{
 	margin: 0 auto;
 	top: 201.1px;
@@ -357,6 +369,10 @@ div#imgcreature{
 		background-color:#272829;
 		height: 172px;
 		width:172px;
+		position: absolute;
+left:210px;
+top:130px;
+
 
 }
 
@@ -366,33 +382,48 @@ div#imgcreature{
 	font-family: Fago;
 	text-align: left;
 	margin-left:41px;
+	position: absolute;
+	left:210px;
+	top:49px;
+
 
 } 
 
+#textpoint{
+
+margin-top: 75px;
+}
+
 #no1 .point{
-	border:solid #cfa45b 5px;
+	border:solid #cfa45b 20px;
 	display: inline;
 	border-radius: 50%;
-	font-size: 58px;
+	/*font-size: 58px;*/
 	font-family: Verdana;
 	color:white;
 	text-transform: uppercase;
 	height: 262px;
 	width: 262px;
+	position: absolute;
+	left:450px;
+	top:50px;
+
+
 }
 
 #no1 .nbtweet{
-	border:solid #cfa45b 5px;
+	border:solid #cfa45b 20px;
 	display: inline;
-	font-size: 58px;
+	/*font-size: 58px;*/
 	font-family: Verdana;
 	color:white;
 	text-transform: uppercase;
 	height: 262px;
 	width: 262px;
 	border-radius: 50%;
-
-
+	position: absolute;
+	left:860px;
+	top:50px;
 }
 
 #no1 .userwin{
@@ -401,4 +432,7 @@ font-family: Verdana;
 color:white;
 text-align: left;
 margin-left:20px;
+position: absolute;
+left:210px;
+top:310px;
 }
