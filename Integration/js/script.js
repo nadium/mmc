@@ -160,7 +160,7 @@ $(document).ready(function(){
 
     $('#button').click(function(){
         var text = $('#texttweet').val();
-  
+    
         $.ajax({
 			url: "./twitterClient/postTweet.php",
 			type: "POST",

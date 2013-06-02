@@ -1,6 +1,11 @@
+@font-face {
+	font-family : HelveticaNeue;
+	src: url(fonts/HelveticaNeue.dfont);
+}
+
 .content{
 	background-color:#3498db;
-	padding-top: 70px;
+	padding-top: 40px;
 }
 
 #welcome{
@@ -9,3 +14,50 @@
 	font-size:36px;
 	text-align:center;
 }
+
+.wrap{
+	margin: 0 auto;
+	width: 960px;
+}
+
+#tweeting p{
+	font-family:HelveticaNeue;
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 8px
+}
+#tweeting div{
+	background-color:#fff;
+	border:1px solid #2c81ba;
+	border-radius:5px ;
+	display: inline-block;
+	height: 100px;
+	margin-left: 28px;
+	padding: 13px 0 0 15px;
+	width:300px;
+}
+#tweeting textarea#texttweet{
+	border-radius:5px;
+	border:1px solid #cccccc;
+	font-family:HelveticaNeue;
+	font-size: 13px;
+	height: 23px;
+	outline: none;
+	padding: 9px 0 0 10px;
+	resize:none;
+	width:274px;
+}
+
+
+
+#tweeting input#button{
+	border-radius
+}
+
+
+list-tweet 520 666
+tweeting
+
+276input
+
+2c81ba
