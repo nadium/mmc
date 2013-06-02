@@ -12,20 +12,9 @@ include('db.php'); // Importation de la connexion a la BDD
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<nav>
-		<div id="nav-wrapper">
-			<div id="logo">&nbsp;</div>
-			<div>
-				<a class="first" href="profile.php">MY PROFILE</a>
-				<a href="hof.php">HALL OF FAME</a>
-				<a href="">ABOUT</a>
-			</div>
-			<div>
-				<a class="first" href="">Sign Up</a>
-				<a href="login.php">Log In</a>
-			</div>
-		</div>
-	</nav>
+	<?php 
+	include('partial/header.php');
+	?>
 	<header id="headerprofile">
 		
 				<h3 id="pseudo">akajiro</h3>
