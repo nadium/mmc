@@ -1,5 +1,11 @@
 <?php require("oauth/twitteroauth.php");  
-session_start(); ?>
+session_start();
+include("db.php");
+$sqluser="SELECT US_point FROM User WHERE US_Twitter='Deadmush';";
+$resuser=mysql_query($sqluser);
+$tabuser=mysql_fetch_array($resuser);  
+$point= $tabuser['US_point'];
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,9 +17,6 @@ session_start(); ?>
 	<link href="css/profil.css" rel="stylesheet" type="text/css" />
 	
 	<script>
-		// this sets the namespace for CreateJS to the window object, so you can instantiate objects without specifying 
-		// the namespace: "new Graphics()" instead of "new createjs.Graphics()"
-		// this is a quick way to make projects built on pervious versions of EaselJS run without extensive modifications
 		var createjs = window;
 	</script>
 	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
@@ -34,15 +37,283 @@ session_start(); ?>
 	<script type="text/javascript" src="js/easeljs/geom/Rectangle.js"></script>
 
 	<!-- Script animation créature -->
-	<script type="text/javascript" src="js/script.js"></script>
+	
+	<script>
+		/*Animation créature
+	******************************************/
+	var pointTweet = "<?php echo $point; ?>";
+	var direction = true;
+	var assets;
+	var mouvement = true;
+	var stage;
+	var w, h;
+	var sens= true;
+	var myCreature;
+	var runningRate, isInWarp, isStationary;
+	var stationaryPosition, isPassed;
+	var fp=10;
+	function init() {
+		if (window.top != window) {
+			document.getElementById("header").style.display = "none";
+		}
 
+		document.getElementById("loader").className = "loader";
+
+		var canvas = document.getElementById("canvas");
+		stage = new Stage(canvas);
+
+		runningRate = 1;
+		isInWarp = false;
+		isStationary = false;
+		stationaryPosition = 300;
+		isPassed = false;
+
+	spriteSheet ={"animations": {"run": [1, 8], "stand": [0],"standleft": [19],"runleft":[12,18],"eat":[20,24], "eatYes":[25], "eatNo":[26], "stand2":[27], "stand3":[28],"stand4":[29] }, "images": ["./assets/evolution0.png"], "frames": {"regX": 0, "height": 524, "count": 30, "regY": 0, "width": 320}};
+	spriteSheet1 ={"animations": {"run": [1, 8], "stand": [0],"standleft": [19],"runleft":[12,18],"eat":[20,24], "eatYes":[25], "eatNo":[26], "stand2":[27], "stand3":[28],"stand4":[29] }, "images": ["./assets/evolution1.png"], "frames": {"regX": 0, "height": 524, "count": 30, "regY": 0, "width": 320}};
+	spriteSheet2 ={"animations": {"run": [1, 8], "stand": [0],"standleft": [19],"runleft":[12,18],"eat":[20,24], "eatYes":[25], "eatNo":[26], "stand2":[27], "stand3":[28],"stand4":[29] }, "images": ["./assets/evolution2.png"], "frames": {"regX": 0, "height": 524, "count": 30, "regY": 0, "width": 320}};
+	spriteSheet3 ={"animations": {"run": [1, 8], "stand": [0],"standleft": [19],"runleft":[12,18],"eat":[20,24], "eatYes":[25], "eatNo":[26], "stand2":[27], "stand3":[28],"stand4":[29] }, "images": ["./assets/evolution3.png"], "frames": {"regX": 0, "height": 524, "count": 30, "regY": 0, "width": 320}};
+
+	if(pointTweet<100){
+		var ss = new SpriteSheet(spriteSheet);
+	}
+	else if(100<pointTweet && pointTweet<500){
+		var ss = new SpriteSheet(spriteSheet1);
+	}	
+	else if(500<pointTweet && pointTweet<1000){
+		var ss = new SpriteSheet(spriteSheet2);
+	}	
+	else if(1000<pointTweet ){
+		var ss = new SpriteSheet(spriteSheet3);
+	}	
+	myCreature = new BitmapAnimation(ss);
+
+	// Set up looping
+	ss.getAnimation("stand").next = "stand";
+	ss.getAnimation("stand2").next = "stand2";
+	ss.getAnimation("stand3").next = "stand3";
+	ss.getAnimation("stand4").next = "stand4";
+	ss.getAnimation("stand4").frequency = 6;
+	ss.getAnimation("run").next = "run";
+	ss.getAnimation("runleft").next = "runleft";
+	ss.getAnimation("eat").next = "eatYes";
+	ss.getAnimation("eat").frequency = 5;
+	ss.getAnimation("eatYes").next = "eatYes";
+	ss.getAnimation("eatYes").frequency = 5;
+	ss.getAnimation("eatNo").next = "eatNo";
+	ss.getAnimation("eatNo").frequency = 5;
+
+	// grab canvas width and height for later calculations:
+	w = canvas.width;
+	h = canvas.height;
+
+	// Position the myCreature sprite
+	myCreature.x = w/4;
+	myCreature.y = 40;
+	myCreature.scaleX = myCreature.scaleY = 0.8;
+
+	assets = [];
+
+	if(pointTweet<100){
+		manifest = [
+			{src:"assets/evolution0.png", id:"myCreature"}
+		];
+	}
+	else if(100<pointTweet && pointTweet<500){
+		manifest = [
+			{src:"assets/evolution1.png", id:"myCreature"}
+		];
+	}	
+	else if(500<pointTweet && pointTweet<1000){
+		manifest = [
+			{src:"assets/evolution2.png", id:"myCreature"}
+		];
+	}	
+	else if(1000<pointTweet ){
+		manifest = [
+			{src:"assets/evolution3.png", id:"myCreature"}
+		];
+	}	
+	
+	loader = new PreloadJS();
+	loader.useXHR = false;  // XHR loading is not reliable when running locally.
+	loader.onFileLoad = handleFileLoad;
+	loader.onComplete = handleComplete;
+	loader.loadManifest(manifest);
+	stage.autoClear = false;
+	}
+
+	function handleFileLoad(event) {
+		assets.push(event);
+	}
+
+	function handleComplete() {
+
+		document.getElementById("loader").className = "";
+
+		if (myCreature == null) {
+			console.log("Can not play. myCreature sprite was not loaded.");
+			return;
+		}
+
+		stage.addChild(myCreature);
+		
+		Ticker.setFPS(15);
+		Ticker.addListener(window);
+	}
+
+
+	setInterval(function randomMove() {
+		var i = Math.floor(Math.random()*10);
+		
+		if(sens==true){
+			if(0<=i && i<3){
+				myCreature.gotoAndPlay("run");
+				mouvement=true;
+			}
+			
+				if(i==3){
+					myCreature.gotoAndPlay("stand");
+					mouvement= false;
+				}
+				else if(i==4){
+					myCreature.gotoAndPlay("stand2");
+					mouvement= false;
+				}
+				else if(i==5){
+					myCreature.gotoAndPlay("stand3");
+					mouvement= false;
+				}
+				
+			
+			
+		}
+		if(sens==false){
+			if(0<=i && i<3){
+				myCreature.gotoAndPlay("runleft");
+				mouvement=true;
+			}
+			if(3<=i && i<6){
+				myCreature.gotoAndPlay("standleft");
+				mouvement= false;
+			}
+			else if(i==6){
+				myCreature.gotoAndPlay("stand2");
+				mouvement= false;
+			}	
+		}
+		
+
+	},3000);
+
+
+	function tick() {
+		var outside = w-400;
+		
+		if(myCreature.x>=200 && myCreature.x<=outside && sens==true ){
+			if (mouvement) {
+				//myCreature.x = ((myCreature.x + 10) >= outside) ? sens=false : (myCreature.x + 10);
+				if((myCreature.x + 10) >= outside){
+					sens=false;
+					myCreature.x=outside;
+					myCreature.gotoAndPlay("runleft");
+				}
+				else{
+					myCreature.x=myCreature.x + 10;
+				}
+			} 	
+		}
+		else if(sens==false){
+			if (mouvement) {
+				//myCreature.x = ((myCreature.x - 10) >= outside) ? sens=true : (myCreature.x - 10);
+				if((myCreature.x - 10) <= 200){
+					sens=true;
+					myCreature.x=200;
+					myCreature.gotoAndPlay("run");
+				}
+				else{
+					myCreature.x=myCreature.x - 10;
+				}
+			} 	
+		}
+
+
+		stage.clear();
+		stage.update();
+	}
+
+
+	/* Gestion de twitter
+	******************************************/
+
+	$(document).ready(function(){
+	    var i=0;
+	    var array = ["#FeedMC","#PhotoMC", "#MusicMC", "#HeticMC","#MeetMyCreature"];
+	    var string;
+
+	    $('#button').click(function(){
+	        var text = $('#texttweet').val();
+	        $.ajax({
+				url: "./twitterClient/postTweet.php",
+				type: "POST",
+				data: "tweet="+text,
+				context: document.body
+			});
+	        var j = Math.floor(Math.random()*10);
+
+	        if(text.indexOf(array[0]) != -1){
+	                myCreature.gotoAndPlay("eat");
+					mouvement= false;
+	            }  
+            else if(text.indexOf(array[1]) != -1) {
+            	myCreature.gotoAndPlay("eatNo");
+            	mouvement= false;
+            }
+            else if(text.indexOf(array[2]) != -1) {
+            	myCreature.gotoAndPlay("eat");
+            	mouvement= false;
+            }
+            else if(text.indexOf(array[3]) != -1) {
+            	myCreature.gotoAndPlay("stand4");
+            	mouvement= false;
+            }
+            else if(text.indexOf(array[4]) != -1) {
+            	myCreature.gotoAndPlay("eat");
+            	mouvement= false;
+            }
+            else {
+            	myCreature.gotoAndPlay("eatNo");
+            	mouvement= false;
+            }
+	        /*for(i=0;i<array.length;i++){
+	            string=array[i];
+
+	            if(text.indexOf(string) != -1){
+	                myCreature.gotoAndPlay("eat");
+					mouvement= false;
+	            }  
+	            else if(text.indexOf(string) == -1) {
+	            	myCreature.gotoAndPlay("eatNo");
+	            	mouvement= false;
+	            }
+	        }*/
+
+	        $('#texttweet').val('');
+	    })
+	   
+	    $.ajaxSetup({ cache: false }); 
+	    setInterval(function() {
+	        $('#blockTweet').load('./twitterClient/refreshTweet.php');       
+	    }, 3000);
+	})
+	</script>
 
 </head>
 <body onload="init();">
 
 	<?php include_once("partial/header.php"); ?>
 
-	<?php if(!empty($_GET['oauth_verifier']) && !empty($_SESSION['oauth_token']) && !empty($_SESSION['oauth_token_secret'])){  
+	<?php 
+	if(!empty($_GET['oauth_verifier']) && !empty($_SESSION['oauth_token']) && !empty($_SESSION['oauth_token_secret'])){  
 		    // We've got everything we need  
 		} else {  
 		    // Something's missing, go back to square 1  
@@ -107,7 +378,7 @@ session_start(); ?>
 				<div>
 					<p>Feed my creature</p>
 				    <textarea name="tweet" id="texttweet" cols="30" rows="1" placeholder="Compose new tweet"></textarea><br>
-				    <input type="button" id="button" value="Envoyer">
+				    <input type="button" id="button" value="Tweet!">
 				</div>
 			</div>
 

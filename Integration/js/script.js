@@ -1,6 +1,6 @@
 /*Animation créature
 ******************************************/
-
+var pointTweet = "<?php echo $point; ?>";
 var direction = true;
 var assets;
 var mouvement = true;
@@ -32,10 +32,10 @@ spriteSheet ={"animations": {"run": [1, 8], "stand": [0],"standleft": [19],"runl
 spriteSheet1 ={"animations": {"run": [1, 8], "stand": [0],"standleft": [19],"runleft":[12,18],"eat":[20,24], "eatYes":[25], "eatNo":[26] }, "images": ["./assets/evolution1.png"], "frames": {"regX": 0, "height": 524, "count": 26, "regY": 0, "width": 320}};
 
 
-if(fp<10){
+if(pointTweet<10){
 	var ss = new SpriteSheet(spriteSheet);
 }
-else if(9<fp){
+else if(9<pointTweet){
 	var ss = new SpriteSheet(spriteSheet1);
 }	
 myCreature = new BitmapAnimation(ss);
@@ -176,7 +176,7 @@ $(document).ready(function(){
 
     $('#button').click(function(){
         var text = $('#texttweet').val();
-    
+     	alert(pointTweet);
         $.ajax({
 			url: "./twitterClient/postTweet.php",
 			type: "POST",
