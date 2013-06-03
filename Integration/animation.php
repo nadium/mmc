@@ -252,15 +252,16 @@ $point= $tabuser['US_point'];
 
 	    $('#button').click(function(){
 	        var text = $('#texttweet').val();
-	        $.ajax({
+	       
+	        var j = Math.floor(Math.random()*10);
+
+	        if(text.indexOf(array[0]) != -1){
+	        	 $.ajax({
 				url: "./twitterClient/postTweet.php",
 				type: "POST",
 				data: "tweet="+text,
 				context: document.body
 			});
-	        var j = Math.floor(Math.random()*10);
-
-	        if(text.indexOf(array[0]) != -1){
 	                myCreature.gotoAndPlay("eat");
 					mouvement= false;
 	            }  
@@ -269,6 +270,12 @@ $point= $tabuser['US_point'];
             	mouvement= false;
             }
             else if(text.indexOf(array[2]) != -1) {
+            	 $.ajax({
+				url: "./twitterClient/postTweet.php",
+				type: "POST",
+				data: "tweet="+text,
+				context: document.body
+			});
             	myCreature.gotoAndPlay("eat");
             	mouvement= false;
             }
@@ -277,6 +284,12 @@ $point= $tabuser['US_point'];
             	mouvement= false;
             }
             else if(text.indexOf(array[4]) != -1) {
+            	 $.ajax({
+				url: "./twitterClient/postTweet.php",
+				type: "POST",
+				data: "tweet="+text,
+				context: document.body
+			});
             	myCreature.gotoAndPlay("eat");
             	mouvement= false;
             }
