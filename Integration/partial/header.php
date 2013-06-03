@@ -4,7 +4,7 @@
 		<div>
 			<a class="first" href="profile.php">MY PROFILE</a>
 			<a href="hof.php">HALL OF FAME</a>
-			<a href="#">ABOUT</a>
+			<a href="animation.php">ANIMATION</a>
 		</div>
 		<div>
 			<a class="first" href="login.php">Sign Up</a>

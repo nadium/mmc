@@ -1,0 +1,46 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1187\cocoasubrtf370
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs24 \cf0 -- phpMyAdmin SQL Dump\
+-- version 3.5.7\
+-- http://www.phpmyadmin.net\
+--\
+-- Client: localhost\
+-- G\'e9n\'e9r\'e9 le: Lun 03 Juin 2013 \'e0 16:24\
+-- Version du serveur: 5.5.29\
+-- Version de PHP: 5.4.10\
+\
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";\
+SET time_zone = "+00:00";\
+\
+--\
+-- Base de donn\'e9es: `twitter`\
+--\
+\
+-- --------------------------------------------------------\
+\
+--\
+-- Structure de la table `users`\
+--\
+\
+CREATE TABLE `users` (\
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,\
+  `oauth_provider` varchar(10) DEFAULT NULL,\
+  `oauth_uid` text,\
+  `oauth_token` text,\
+  `oauth_secret` text,\
+  `username` text,\
+  PRIMARY KEY (`id`)\
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;\
+\
+--\
+-- Contenu de la table `users`\
+--\
+\
+INSERT INTO `users` (`id`, `oauth_provider`, `oauth_uid`, `oauth_token`, `oauth_secret`, `username`) VALUES\
+(1, 'twitter', '468263452', '468263452-xdtr89jjIoy0DmUR6ZhSSgNU2F5b5Ssv0ggoIMrG', 'bQVWeCK4kL4nw5GFAPHAXWenv7mKCRl7iGLpihr5nUU', 'LongLui'),\
+(2, 'twitter', '1109561384', '1109561384-kTN7OdWMTSfCYnInjmjl4vzj97RbtDbDtspBx50', 'CNaAz3D4zWWoplqN9B0MewKEnULLUjirHxGvpmbb0Y8', 'MeetMyCreature');\
+}
